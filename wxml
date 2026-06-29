@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="status">
+    <text wx:if="{{isDealer}}">你是庄家</text>
+    <text wx:if="{{hasTing}}">已报听</text>
+    <text>剩余: {{remainingTiles}} 张</text>
+  </view>
+
+  <view class="table">
+    <view class="houkou-info">后扣: {{houKouDisplay}}</view>
+    <view class="discards">
+      <block wx:for="{{discards}}" wx:key="index">
+        <image src="{{item.src}}" class="tile" />
+      </block>
+    </view>
+  </view>
+
+  <view class="player-hand">
+    <block wx:for="{{playerHand}}" wx:key="index">
+      <image src="{{item.src}}" class="tile player-tile" bindtap="selectTile" data-index="{{index}}" />
+    </block>
+  </view>
+
+  <view class="controls">
+    <button bindtap="declareTing">报听</button>
+    <button bindtap="drawTile">摸牌</button>
+    <button bindtap="discardSelected">打牌</button>
+    <button bindtap="hu">胡</button>
+  </view>
+</view>
